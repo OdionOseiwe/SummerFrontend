@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './Components/Home';
+import Community from './Components/Community';
+import Docs from './Components/Docs';
+import BorrowLend from './Components/BorrowLend';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+     <BrowserRouter>
+          <Routes>
+            <Route path="/">
+              <Route index element={<Home />} />
+              <Route path="community" element={<Community />} />
+              <Route path="docs" element={<Docs />} />
+              <Route path="borrowLend" element={<BorrowLend />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+    </>
   );
 }
 
