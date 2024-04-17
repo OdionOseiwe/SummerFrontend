@@ -400,11 +400,6 @@
 }
 
 @media only screen and (max-width: 599px) {
-  /* .Assets {
-    .Asset__lends {
-      padding: 20px;
-    }
-  } */
   .menu {
     display: flex;
   }
