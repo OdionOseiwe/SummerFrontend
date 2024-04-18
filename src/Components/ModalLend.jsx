@@ -9,6 +9,7 @@ import { parseEther } from "viem";
 const ModalLend = ({ setOpenL }) => {
   const [input, setInput] = useState("0.0");
   const { writeContract } = useWriteContract();
+  const [open, setOpen] = useState(true);
   const ref = useRef(null);
 
   // const approve = () => {
@@ -61,26 +62,34 @@ const ModalLend = ({ setOpenL }) => {
   return (
     <>
       <div className="close" onClick={() => setOpenL(false)}></div>
-      <div className="modal">
-        <div className="Modal__action">
-          <div className="Modal__token"> You can only Lend USDC</div>
-          <input
-            className="Modal__input"
-            placeholder="0.0"
-            type="text"
-            onChange={(e) => setInput(e.target.value)}
-            ref={ref}
-          />
+      {
+        open && (
+          <div className="modal">
+          <div className="Modal__action">
+            <div className="close" onClick={() => setOpen(false)}>
+              X
+            </div>
+            <div className="Modal__token"> You can only Lend USDC</div>
+            <input
+              className="Modal__input"
+              placeholder="0.0"
+              type="text"
+              onChange={(e) => setInput(e.target.value)}
+              ref={ref}
+            />
+          </div>
+          <div className="Modal__Lend">
+            <button className="modal__supply" onClick={deposit}>
+              Lend
+            </button>
+            <button className="modal__withdraw" onClick={withdraw}>
+              withdraw
+            </button>
+          </div>
         </div>
-        <div className="Modal__Lend">
-          <button className="modal__supply" onClick={deposit}>
-            Lend
-          </button>
-          <button className="modal__withdraw" onClick={withdraw}>
-            withdraw
-          </button>
-        </div>
-      </div>
+        )
+      }
+     
     </>
   );
 };

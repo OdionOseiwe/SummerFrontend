@@ -116,7 +116,6 @@
   /* background-image: linear-gradient(to right, rgb(2, 4, 16) , rgb(3, 7, 45)); */
   height: 100vh;
   background-image: linear-gradient(to right, rgb(2, 4, 16), rgb(3, 7, 45));
-  
 
   .BorrowLend__header {
     display: flex;
@@ -197,18 +196,6 @@
       border-radius: 5px;
       margin: 10px;
     }
-  }
-
-  .close {
-    background-color: rgba(0, 0, 0, 0.2);
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    backdrop-filter: blur(5px);
   }
 
   .modal {
@@ -294,6 +281,13 @@
   .Asset__borrow:hover {
     cursor: pointer;
   }
+}
+
+.close {
+  position: relative;
+  top: 0;
+  left: 50%;
+  cursor: pointer;
 }
 
 .menu {

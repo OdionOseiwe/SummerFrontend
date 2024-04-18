@@ -9,6 +9,7 @@ import { parseEther } from "viem";
 const ModalSupply=({setOpenS}) =>{
     const [input, setInput] = useState("0.0");
     const { writeContract } = useWriteContract();
+    const [open, setOpen] = useState(true);
     const ref = useRef(null);
   
     
@@ -51,8 +52,14 @@ const ModalSupply=({setOpenS}) =>{
     return ( 
         <>
             <div className="close" onClick={()=>setOpenS(false)}></div>
-            <div className="modal">
-                <div className="Modal__action">
+              {
+                open && (
+                  <div className="modal">
+
+                  <div className="Modal__action">
+                  <div className="close" onClick={() => setOpen(false)}>
+                    X
+                  </div>
                     <div className="Modal__token"> Supply BNB as Collateral</div>
                     <div className="Modal__token">input the amount of BNB you want to supply or withdraw</div>
                     <input className="Modal__input" 
@@ -72,7 +79,8 @@ const ModalSupply=({setOpenS}) =>{
                 </div>
                 
             </div>
-
+                )
+              }
         </> 
     );
 }
