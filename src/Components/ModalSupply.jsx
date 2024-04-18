@@ -2,6 +2,7 @@ import { useState } from "react";
 import React, { useRef } from "react";
 import { LendingDapp } from "../address";
 import ABI from "../ABI/LendingDApp.json";
+import AbiWBNB from "../ABI/WBNB.json"
 import { useWriteContract } from "wagmi";
 import { parseEther } from "viem";
 
@@ -12,6 +13,16 @@ const ModalSupply=({setOpenS}) =>{
   
     
     const deposit = () =>{
+      // writeContract({
+      //   address: '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd',
+      //   abi:AbiWBNB,
+      //   functionName: 'approve',
+      //   args:[
+      //     LendingDapp,
+      //     parseEther(input),
+      //   ],
+      // })
+
       writeContract({
         address: LendingDapp,
         abi: ABI,
