@@ -1,8 +1,8 @@
 import { useState } from "react";
 import React, { useRef } from "react";
-import { LendingDapp, MockUSDC } from "../address";
+import { LendingDapp} from "../address";
 import ABI from "../ABI/LendingDApp.json";
-import AbiMockUSDC from "../ABI/MockUSDC.json";
+// import AbiMockUSDC from "../ABI/MockUSDC.json";
 import { useWriteContract } from "wagmi";
 import { parseEther } from "viem";
 
@@ -11,14 +11,14 @@ const ModalLend = ({ setOpenL }) => {
   const { writeContract } = useWriteContract();
   const ref = useRef(null);
 
-  const approve = () => {
-    writeContract({
-      address: MockUSDC,
-      abi: AbiMockUSDC,
-      functionName: "approve",
-      args: [LendingDapp, parseEther(input)],
-    });
-  };
+  // const approve = () => {
+  //   writeContract({
+  //     address: MockUSDC,
+  //     abi: AbiMockUSDC,
+  //     functionName: "approve",
+  //     args: [LendingDapp, parseEther(input)],
+  //   });
+  // };
 
   const deposit = () => {
     // writeContract({

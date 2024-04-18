@@ -2,7 +2,7 @@ import { useState } from "react";
 import React, { useRef } from "react";
 import { LendingDapp } from "../address";
 import ABI from "../ABI/LendingDApp.json";
-import AbiWBNB from "../ABI/WBNB.json"
+// import AbiWBNB from "../ABI/WBNB.json"
 import { useWriteContract } from "wagmi";
 import { parseEther } from "viem";
 
