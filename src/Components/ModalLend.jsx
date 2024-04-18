@@ -61,7 +61,6 @@ const ModalLend = ({ setOpenL }) => {
 
   return (
     <>
-      <div className="close" onClick={() => setOpenL(false)}></div>
       {
         open && (
           <div className="modal">

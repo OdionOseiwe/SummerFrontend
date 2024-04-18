@@ -32,7 +32,6 @@ const ModalBorrow = ({ setOpenB }) => {
   };
   return (
     <>
-      <div className="close" onClick={() => setOpenB(false)}></div>
       {open && (
         <div className="modal">
           <div className="Modal__action">

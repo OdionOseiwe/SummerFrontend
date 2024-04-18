@@ -51,7 +51,6 @@ const ModalSupply=({setOpenS}) =>{
     }
     return ( 
         <>
-            <div className="close" onClick={()=>setOpenS(false)}></div>
               {
                 open && (
                   <div className="modal">
