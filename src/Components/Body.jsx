@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import Nav from "./nav";
 import Footer from "./footer";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+// import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 function Body() {
   return (
