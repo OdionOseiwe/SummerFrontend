@@ -3,25 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import "@rainbow-me/rainbowkit/styles.css";
-import { RainbowKitProvider, darkTheme } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
-// import {
-//   mainnet,
-//   polygon,
-//   optimism,
-//   arbitrum,
-//   base,
-//   zora,
-// } from 'wagmi/chains';
+import { MoralisProvider } from "react-moralis";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-
-// const config = getDefaultConfig({
-//   appName: 'My RainbowKit App',
-//   projectId: 'YOUR_PROJECT_ID',
-//   chains: [mainnet, polygon, optimism, arbitrum, base, zora],
-//   ssr: true, // If your dApp uses server side rendering (SSR)
-// });
-
 import { http, createConfig } from "wagmi";
 import { bscTestnet } from "wagmi/chains";
 
@@ -39,9 +23,9 @@ root.render(
   <React.StrictMode>
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <RainbowKitProvider theme={darkTheme()}>
+        <MoralisProvider initializeOnMount={false}>
           <App />
-        </RainbowKitProvider>
+        </MoralisProvider>
       </QueryClientProvider>
     </WagmiProvider>
   </React.StrictMode>

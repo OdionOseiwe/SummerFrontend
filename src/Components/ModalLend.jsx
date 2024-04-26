@@ -1,69 +1,100 @@
 import { useState } from "react";
 import React, { useRef } from "react";
-import { LendingDapp} from "../address";
+import { LendingDapp, MockUSDC } from "../address";
 import ABI from "../ABI/LendingDApp.json";
-// import AbiMockUSDC from "../ABI/MockUSDC.json";
-import { useWriteContract } from "wagmi";
+import AbiMockUSDC from "../ABI/MockUSDC.json";
 import { parseEther } from "viem";
+import { useWeb3Contract } from "react-moralis";
+import { useToasts } from "react-toast-notifications";
 
 const ModalLend = ({ setOpenL }) => {
   const [input, setInput] = useState("0.0");
-  const { writeContract } = useWriteContract();
   const [open, setOpen] = useState(true);
   const ref = useRef(null);
+  const { addToast } = useToasts();
 
-  // const approve = () => {
-  //   writeContract({
-  //     address: MockUSDC,
-  //     abi: AbiMockUSDC,
-  //     functionName: "approve",
-  //     args: [LendingDapp, parseEther(input)],
-  //   });
-  // };
+  const { runContractFunction: approve } = useWeb3Contract({
+    abi: AbiMockUSDC,
+    contractAddress: MockUSDC,
+    functionName: "approve",
+    params: {
+      spender: LendingDapp,
+      value: parseEther(input),
+    },
+  });
 
-  const deposit = () => {
-    // writeContract({
-    //   address: MockUSDC,
-    //   abi: AbiMockUSDC,
-    //   functionName: "approve",
-    //   args: [LendingDapp, parseEther(input)],
-    // });
+  const { runContractFunction: deposit } = useWeb3Contract({
+    abi: ABI,
+    contractAddress: LendingDapp,
+    functionName: "deposit",
+    params: {
+      token: "0x97b13B0fc0056139460da0Dd1F485FFC9d663A40",
+      amount: parseEther(input),
+    },
+  });
 
-    writeContract({
-      address: LendingDapp,
-      abi: ABI,
-      functionName: "deposit",
-      args: ["0x97b13B0fc0056139460da0Dd1F485FFC9d663A40", parseEther(input)],
+  async function handleDepositClick() {
+    await approve({
+      onError: (error) => {
+        addToast(error.message, { appearance: "error", autoDismiss: true });
+      },
+      onSuccess: (tx) => {
+        addToast("approved successfully", {
+          appearance: "success",
+          autoDismiss: true,
+        });
+        doDeposit(tx);
+      },
     });
-    ref.current.value = "";
-  };
+  }
 
-  const withdraw = () => {
-    writeContract({
-      address: LendingDapp,
-      abi: ABI,
-      functionName: "withdraw",
-      args: [
-        "0x97b13B0fc0056139460da0Dd1F485FFC9d663A40", // MockUSDC
-        parseEther(input),
-      ],
+  async function doDeposit(tx) {
+    await tx.wait(1);
+
+    await deposit({
+      onError: (error) => {
+        addToast(error.message, { appearance: "error", autoDismiss: true });
+      },
+      onSuccess: () => {
+        addToast("Wow you just depsited",{
+          appearance: "success",
+          autoDismiss: true,
+        });
+      },
     });
+
     ref.current.value = "";
-  };
+  }
 
-  // const { isLoading, data } = useReadContract({
-  //   address: '0x6Cb9647c32f9B85b014bc16d5CE70C99D4200e81',
-  //   abi:ABI,
-  //   functionName: 'name',
-  // });
+  const { runContractFunction: withdraw } = useWeb3Contract({
+    abi: ABI,
+    contractAddress: LendingDapp,
+    functionName: "withdraw",
+    params: {
+      token: "0x97b13B0fc0056139460da0Dd1F485FFC9d663A40", // MockUSDC
+      amount: parseEther(input),
+    },
+  });
 
-  // console.log(data, isLoading);
+  async function handleWithdrawClick() {
+    await withdraw({
+      onError: (error) => {
+        addToast(error.message, { appearance: "error" });
+      },
+      onSuccess: (tx) => {
+        addToast("Wow you just withdraw", {
+          appearance: "success",
+        });
+      },
+    });
+
+    ref.current.value = "";
+  }
 
   return (
     <>
-      {
-        open && (
-          <div className="modal">
+      {open && (
+        <div className="modal">
           <div className="Modal__action">
             <div className="close" onClick={() => setOpen(false)}>
               X
@@ -78,17 +109,15 @@ const ModalLend = ({ setOpenL }) => {
             />
           </div>
           <div className="Modal__Lend">
-            <button className="modal__supply" onClick={deposit}>
+            <button className="modal__supply" onClick={handleDepositClick}>
               Lend
             </button>
-            <button className="modal__withdraw" onClick={withdraw}>
+            <button className="modal__withdraw" onClick={handleWithdrawClick}>
               withdraw
             </button>
           </div>
         </div>
-        )
-      }
-     
+      )}
     </>
   );
 };
