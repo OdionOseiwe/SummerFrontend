@@ -148,7 +148,6 @@
   }
 
   .Assets {
-    color: #fff;
     .Asset__lends {
       display: grid;
       grid-template-columns: auto auto auto;
@@ -190,26 +189,26 @@
     }
 
     .Asset__supply {
-      background-color: transparent;
+      /* background-color: transparent; */
       padding: 10px;
       font-size: 20px;
       border: 1px solid rgb(44, 38, 230);
       text-align: center;
       border-radius: 5px;
       margin: 10px;
-      color: #fff;
+      color: rgb(44, 38, 230);
 
     }
 
     .Asset__borrow {
-      background-color: transparent;
+      /* background-color: transparent; */
       padding: 10px;
       font-size: 20px;
       border: 1px solid rgb(44, 38, 230);
       text-align: center;
       border-radius: 5px;
       margin: 10px;
-      color: #fff;
+      color: rgb(44, 38, 230);
 
     }
   }
