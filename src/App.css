@@ -89,6 +89,7 @@
 .Connect_btn {
   background-color: rgb(2, 2, 28);
   padding: 20px;
+  color: #fff;
 }
 
 .Footer {
@@ -123,7 +124,7 @@
   color: #fff;
 
   /* background-image: linear-gradient(to right, rgb(2, 4, 16) , rgb(3, 7, 45)); */
-  height: 100vh;
+  /* height:auto; */
   background-image: linear-gradient(to right, rgb(2, 4, 16), rgb(3, 7, 45));
 
   .BorrowLend__header {
@@ -164,7 +165,6 @@
       color: rgb(44, 38, 230);
       font-weight: 500;
       font-size: 16px;
-
     }
 
     .Asset__lend_des {
@@ -197,7 +197,6 @@
       border-radius: 5px;
       margin: 10px;
       color: rgb(44, 38, 230);
-
     }
 
     .Asset__borrow {
@@ -209,7 +208,6 @@
       border-radius: 5px;
       margin: 10px;
       color: rgb(44, 38, 230);
-
     }
   }
 
@@ -328,6 +326,44 @@
   border-radius: 0.2rem;
 }
 
+/* Users deposits detail */
+
+.Users__DespositsDetails {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* background-image: linear-gradient(to right, rgb(11, 21, 79), rgb(13, 16, 44)); */
+  margin: 50px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.Lended--amount,
+.Lended--interest,
+.Supplied--amount,
+.borrowed--amount {
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.lended--span,
+.lended--interest,
+.Supplied--RealAmount,
+.borrowed--RealAmount {
+  color: blue;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.SummerUSDBalance {
+  color: blue;
+  font-weight: 600;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 90px;
+}
+
+
 @media only screen and (min-width: 1000px) {
   .Assets {
     display: grid;
@@ -389,6 +425,7 @@
   .Connect_btn {
     background-color: rgb(2, 2, 28);
     padding: 20px;
+    color: #fff;
   }
 
   .Body {
@@ -467,6 +504,7 @@
   .Connect_btn {
     background-color: rgb(2, 2, 28);
     padding: 20px;
+    color: #fff;
   }
 
   .Body {
@@ -500,40 +538,12 @@
     border-radius: 5px;
     text-decoration: none;
   }
+
+  .Users__DespositsDetails {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 20px;
+    border-radius: 20px;
+  }
 }
 
-/* Users deposits detail */
-
-.Users__DespositsDetails {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  background-image: linear-gradient(to right, rgb(11, 21, 79), rgb(13, 16, 44));
-  margin: 50px;
-  padding: 20px;
-  border-radius: 20px;
-}
-
-.Lended--amount,
-.Lended--interest,
-.Supplied--amount,
-.borrowed--amount {
-  padding: 10px;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.lended--span,
-.lended--interest,
-.Supplied--RealAmount,
-.borrowed--RealAmount {
-  color: blue;
-  font-weight: 600;
-  font-size: 20px;
-}
-
-.SummerUSDBalance {
-  color: blue;
-  font-weight: 600;
-  font-size: 24px;
-  text-align: center;
-}

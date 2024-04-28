@@ -23,7 +23,7 @@ root.render(
   <React.StrictMode>
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <MoralisProvider initializeOnMount={false}>
+        <MoralisProvider initializeOnMount={false} >
           <App />
         </MoralisProvider>
       </QueryClientProvider>

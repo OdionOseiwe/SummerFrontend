@@ -6,7 +6,7 @@ import { useMoralis } from "react-moralis";
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const {chainId: chainIdHex } = useMoralis();
+  const { chainId: chainIdHex } = useMoralis();
   const chainId = parseInt(chainIdHex).toString();
 
   const supportedChains = ["97"];
