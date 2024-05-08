@@ -1,27 +1,38 @@
 import { Outlet, Link } from "react-router-dom";
 import { useState } from "react";
-import { ConnectButton } from "@web3uikit/web3";
-import { useMoralis } from "react-moralis";
+import { ConnectButton } from "thirdweb/react";
+import { createThirdwebClient } from "thirdweb";
+import { createWallet, inAppWallet } from "thirdweb/wallets";
+import { defineChain } from "thirdweb";
+
+const wallets = [
+  inAppWallet(),
+  createWallet("io.metamask"),
+  createWallet("com.coinbase.wallet"),
+  createWallet("me.rainbow"),
+];
+
+const client = createThirdwebClient({
+  clientId: "379ff66a369f3e12df6535c7008603a5",
+});
 
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const { chainId: chainIdHex } = useMoralis();
-  const chainId = parseInt(chainIdHex).toString();
-
-  const supportedChains = ["97"];
+  const myChain = defineChain({
+    id: 97,
+    rpc: "https://bsc-testnet-rpc.publicnode.com",
+    nativeCurrency: {
+      name: "BNB",
+      symbol: "BNB",
+      decimals: 18,
+    },
+  });
 
 
   return (
     <>
       <div className="Connect_btn">
-        <ConnectButton/>
-        {
-          supportedChains.includes(chainId) ? (
-              <div></div>
-          ) : (
-              <p>Switch to BNB testnet</p>
-          )}
+        <ConnectButton client={client} wallets={wallets} chain={myChain}/>
       </div>
       <div className="Header">
         <div

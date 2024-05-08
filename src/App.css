@@ -124,7 +124,7 @@
   color: #fff;
 
   /* background-image: linear-gradient(to right, rgb(2, 4, 16) , rgb(3, 7, 45)); */
-  /* height:auto; */
+  /* height:100vh; */
   background-image: linear-gradient(to right, rgb(2, 4, 16), rgb(3, 7, 45));
 
   .BorrowLend__header {
@@ -149,9 +149,13 @@
   }
 
   .Assets {
+    .Assets__topic {
+      text-align: center;
+      padding: 40px;
+    }
     .Asset__lends {
       display: grid;
-      grid-template-columns: auto auto auto;
+      grid-template-columns: 25% 25% 25% 25%;
       align-items: center;
       font-weight: 800;
       font-size: 18px;
@@ -169,7 +173,7 @@
 
     .Asset__lend_des {
       display: grid;
-      grid-template-columns: auto auto auto;
+      grid-template-columns: 25% 25% 25% 25%;
       padding-left: 40px;
       padding-right: 40px;
       font-size: 18px;
@@ -179,7 +183,7 @@
 
     .Asset__lend_des2 {
       display: grid;
-      grid-template-columns: auto auto auto auto;
+      grid-template-columns: 25% 25% 25% 25%;
       font-size: 18px;
       color: rgb(44, 38, 230);
       align-items: center;
@@ -331,10 +335,8 @@
 .Users__DespositsDetails {
   display: grid;
   grid-template-columns: 50% 50%;
-  /* background-image: linear-gradient(to right, rgb(11, 21, 79), rgb(13, 16, 44)); */
-  margin: 50px;
-  padding: 20px;
-  border-radius: 20px;
+  background-color: rgb(2, 2, 28);
+  padding: 50px;
 }
 
 .Lended--amount,
@@ -361,15 +363,16 @@
   font-size: 24px;
   text-align: center;
   margin-top: 90px;
+  padding: 20px;
+  background-color: rgb(2, 2, 28);
 }
 
-
-@media only screen and (min-width: 1000px) {
+/* @media only screen and (min-width: 1000px) {
   .Assets {
     display: grid;
     grid-template-columns: auto auto;
   }
-}
+} */
 
 @media only screen and (max-width: 800px) and (min-width: 600px) {
   .menu {
@@ -538,12 +541,4 @@
     border-radius: 5px;
     text-decoration: none;
   }
-
-  .Users__DespositsDetails {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    margin: 20px;
-    border-radius: 20px;
-  }
 }
-
